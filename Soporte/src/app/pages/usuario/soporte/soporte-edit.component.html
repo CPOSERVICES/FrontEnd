@@ -1,0 +1,50 @@
+<div class="row" align="center">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title text-center">Requerimiento</h4>
+        <form ngNativeValidate #forma="ngForm" (ngSubmit)="actualizarTicket(forma)">
+
+
+          <div class="col-sm-10">
+            <input hidden [(ngModel)]="soporte.sp_estado" #sp_estado="ngModel" name="sp_estado" value="0" type="text"
+              class="form-control" id="estado" placeholder="Estado">
+          </div>
+          <div class="col-sm-10">
+            <input hidden [(ngModel)]="soporte.sp_id" #sp_id="ngModel" name="sp_id" ngValue="3" type="text"
+              class="form-control">
+          </div>
+
+          <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Titulo</label>
+            <div class="col-sm-10">
+              <input [(ngModel)]="soporte.sp_titulo" #sp_titulo="ngModel" name="sp_titulo" type="text"
+                class="form-control" placeholder="Ingrese inconveniente " required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Detalle</label>
+            <div class="col-sm-10">
+              <textarea [(ngModel)]="soporte.sp_detalle" #sp_detalle="ngModel" name="sp_detalle"
+                class="md-textarea form-control" rows="8" placeholder="Detallar el inconveniente" required></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <button type="submit" class="btn btn-success btn-block">Actualizar</button>
+            </div>
+            <div class="col-md-4">
+              <button routerLink="/soportes" class="btn btn-info btn-block">Regesar</button>
+            </div>
+          </div>
+
+
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>

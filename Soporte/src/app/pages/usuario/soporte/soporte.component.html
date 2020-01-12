@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title text-center">Requerimiento</h4>
+        <form ngNativeValidate #forma="ngForm">
+
+          <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Título</label>
+            <div class="col-sm-10">
+              <input disabled [(ngModel)]="soporte.sp_titulo" #sp_titulo="ngModel" name="sp_titulo" type="text"
+                class="form-control" placeholder="Ingrese inconveniente ">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Detalle</label>
+            <div class="col-sm-10">
+              <textarea disabled [(ngModel)]="soporte.sp_detalle" #sp_detalle="ngModel" name="sp_detalle"
+                class="md-textarea form-control" rows="4" placeholder="Detalle el inconveniente"></textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Técnico Asignado</label>
+            <div class="col-sm-10">
+              <input disabled [(ngModel)]="tecnico.nombre" #nombre="ngModel" name="nombre" type="text"
+                class="form-control" placeholder="Ingrese inconveniente ">
+            </div>
+          </div>
+          <button type="button" routerLink="/soportes" class="btn btn-success"><i class="fas fa-sign-out-alt"></i>
+            Regresar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6" align="center">
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+      <table class="table table-striped mb-0">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col"><b>Ticket</b></th>
+            <th scope="col"><b>Usuario</b></th>
+            <th scope="col"><b>Comentario</b></th>
+            <th scope="col"><b>Fecha</b></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let comentario of comentarios; index as i">
+            <td>{{i+1}}</td>
+            <td>{{comentario.nombre}}</td>
+            <td>{{comentario.spc_detalle}}</td>
+            <td>{{comentario.spc_fecha}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="soporte.sp_estado == 5">
+      <label for=""><b>Se soluciono su inconveniente.?</b></label>
+      <div class="row">
+        <div>
+          <button type="button" (click)="requerimientoSolucionado()" class="btn btn-outline-success"><i
+              class="fa fa-check"></i> Sí</button>
+        </div>
+        <div>
+          <button (click)="requerimientoNoSolucionado()" 
+            routerLinkActive="router-link-active" class="btn btn-outline-danger"><i class="fas fa-times"></i>
+            No</button>
+        </div>
+        <div class=" form-control col-sm-10">
+          <input  [(ngModel)]="soporte.sp_titulo" #sp_titulo="ngModel" name="sp_titulo" type="text"
+            class="form-control" placeholder="Ingrese inconveniente ">
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>

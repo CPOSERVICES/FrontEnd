@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalSoporteService, UsuarioService } from 'src/app/services/service.index';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  usuario: any
+
+  constructor(
+    public _usuario: UsuarioService,
+    public _modalSoporteService: ModalSoporteService
+  ) {
+    this.usuario = this._usuario.getIdentity();
+   }
 
   ngOnInit() {
+  }
+
+  mostrarModal(){
+    this._modalSoporteService.mostarModal();
   }
 
 }

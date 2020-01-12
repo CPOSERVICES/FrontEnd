@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title text-center">Requerimiento</h4>
+        <div class="col-sm-10">
+          <input hidden name="sp_estado" value="2" type="text" class="form-control" id="estado" placeholder="Estado">
+        </div>
+        <div class="col-sm-10">
+          <input hidden [(ngModel)]="soporte.sp_usuario" #sp_usuario="ngModel" name="sp_usuario" ngValue="3" type="text"
+            class="form-control">
+        </div>
+        <div class="form-group row">
+          <label for="inputPassword3" class="col-sm-2 col-form-label">Título</label>
+          <div class="col-sm-10">
+            <input disabled [(ngModel)]="soporte.sp_titulo" #sp_titulo="ngModel" name="sp_titulo" type="text"
+              class="form-control" placeholder="Ingrese inconveniente ">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputPassword3" class="col-sm-2 col-form-label">Detalle</label>
+          <div class="col-sm-10">
+            <textarea disabled [(ngModel)]="soporte.sp_detalle" #sp_detalle="ngModel" name="sp_detalle"
+              class="md-textarea form-control" rows="10" placeholder="Detalle el inconveniente"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title text-center">Asignación de Técnico</h4>
+        <form ngNativeValidate #forma="ngForm" (ngSubmit)="asignarTecnico(forma)">
+          <div class="form-group row">
+            <label class="col-sm-2">Técnicos</label>
+            <div class="col-sm-10">
+              <select class="form-control" [(ngModel)]="comentario.spc_clie_tec" #spc_clie_tec="ngModel"
+                name="spc_clie_tec" required>
+                <option disabled selected="selected"> Seleccione Técnico</option>
+                <option Value='62'>Cristian Piguave</option>
+                <option value='78'>Diego Arias</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Detalle</label>
+            <div class="col-sm-10">
+              <textarea [(ngModel)]="comentario.spc_detalle" #spc_detalle="ngModel" name="spc_detalle"
+                class="md-textarea form-control" rows="8" placeholder="Agrege Comentario"></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-success"><i class="fas fa-users"></i>
+            Asignar Técnico</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+
+</div>

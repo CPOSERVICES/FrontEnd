@@ -1,0 +1,53 @@
+<div [ngClass]="_modalSoporteService.oculto">
+
+  <div class="modal" style="display: block;" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Crear Nuevo Ticket</h5>
+          <button (click)="cerrarModal()" type="button" class="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form ngNativeValidate #forma="ngForm" (ngSubmit)="registarTicket(forma)">
+
+
+            <div class="col-sm-10">
+              <input hidden [(ngModel)]="soporte.sp_estado" #sp_estado="ngModel" name="sp_estado" value="0" type="text"
+                class="form-control" id="estado" placeholder="Estado">
+            </div>
+            <div class="col-sm-10">
+              <input hidden [(ngModel)]="soporte.sp_usuario" #sp_usuario="ngModel" name="sp_usuario" ngValue="3"
+                type="text" class="form-control">
+            </div>
+
+            <div class="form-group row">
+              <label for="inputPassword3" class="col-sm-2 col-form-label">Título</label>
+              <div class="col-sm-10">
+                <input [(ngModel)]="soporte.sp_titulo" #sp_titulo="ngModel" name="sp_titulo" type="text"
+                  class="form-control" placeholder="Ingrese inconveniente " required>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputPassword3" class="col-sm-2 col-form-label">Detalle</label>
+              <div class="col-sm-10">
+                <textarea [(ngModel)]="soporte.sp_detalle" #sp_detalle="ngModel" name="sp_detalle"
+                  class="md-textarea form-control" rows="8" placeholder="Detalle el inconveniente" required></textarea>
+              </div>
+            </div>
+
+
+            <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Crear </button>
+            <button align="rigth" (click)="cerrarModal()" type="button" class="btn btn-secondary"><i class="fas fa-sign-out-alt"></i> Cerrar</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
