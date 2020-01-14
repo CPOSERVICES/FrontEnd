@@ -17,6 +17,9 @@ import { AsignarTecnicoComponent } from './master/asignar-tecnico/asignar-tecnic
 import { ListaSoporteComponent } from './master/lista-soporte/lista-soporte.component';
 import { VerSoporteComponent } from './tecnico/ver-soporte.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ComentariosComponent } from './master/comentarios/comentarios.component';
+import { CorreoComponent } from './correo/correo.component';
+
 
 
   
@@ -34,13 +37,16 @@ import { DashboardComponent } from './dashboard/dashboard.component';
         AsignarTecnicoComponent,
         ListaSoporteComponent,
         VerSoporteComponent,
-        DashboardComponent
+        DashboardComponent,
+        ComentariosComponent,
+        CorreoComponent
     ],
     exports:[
         UsuarioComponent,
         SoporteComponent,
         SoportesComponent,
-        DashboardComponent
+        DashboardComponent,
+        ComentariosComponent
 
     ],
     imports: [

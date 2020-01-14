@@ -27,7 +27,8 @@ export class SoportesComponent implements OnInit {
     public activatedRoute: ActivatedRoute
   ) {
     this.usuario = this._usuario.getIdentity();
-    this.idUsuario =  this.usuario[0].id
+    this.idUsuario =  this.usuario[0].id;
+    this.cargarTicketsUsuario();
   }
 
   ngOnInit() {
@@ -44,7 +45,6 @@ export class SoportesComponent implements OnInit {
           this.cargandoTicket = false;
         } else {
           this.cargandoTicket = true;
-          console.log(this.soportes);
         }
        
      });

@@ -10,6 +10,7 @@ import { TecnicoComponent } from './tecnico/tecnico.component';
 import { VerSoporteComponent } from './tecnico/ver-soporte.component';
 import { LoginGuardsGuard } from '../services/service.index';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ComentariosComponent } from './master/comentarios/comentarios.component';
 
 
 
@@ -29,6 +30,7 @@ const pagesRoutes: Routes = [
             //Master//
             { path: 'asignar/:id', component: AsignarTecnicoComponent, data: { titulo: 'Asignar Técnico' } },
             { path: 'listar', component: ListaSoporteComponent, data: { titulo: 'Lista de Soportes' } },
+            { path: 'comentarios/:id', component: ComentariosComponent, data: { titulo: 'Comentarios Generados' } },
             
             //Tecnico//
             { path: 'tecnico', component: TecnicoComponent, data: { titulo: 'Lista de Soportes' } },

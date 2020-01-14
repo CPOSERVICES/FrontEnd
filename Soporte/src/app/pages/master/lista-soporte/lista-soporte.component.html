@@ -48,7 +48,7 @@
             <td>{{soporte.spe_detalle}}</td>
             <td class="text-center">
               <!-- [routerLink]="['/listar', soporte.sp_id]" -->
-              <button routerLink="/listar" routerLinkActive="router-link-active" type="button"
+              <button [routerLink]="['/comentarios', soporte.sp_id]" routerLinkActive="router-link-active" type="button"
                 class="btn btn-sm"><i class="mdi mdi-eye"></i></button>
             </td>
           </tr>

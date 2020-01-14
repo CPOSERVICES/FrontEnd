@@ -1,7 +1,8 @@
 import { Component, OnInit, NgZone } from "@angular/core";
 import {
   SoporteService,
-  UsuarioService
+  UsuarioService,
+  MasterService
 } from "../../../services/service.index";
 import { Soporte } from "src/app/models/soporte.model";
 
@@ -22,11 +23,14 @@ export class SoporteComponent implements OnInit {
   usuario: any;
   comentarios: Comentarios[] = [];
   tecnico: Tecnico;
+  quejas:boolean = false;
+  tablaCometarios: boolean = false; 
 
   constructor(
     public _soporte: SoporteService,
     public _usuario: UsuarioService,
     public activatedRoute: ActivatedRoute,
+    public _master: MasterService,
     public router: Router
   ) {
     this.usuario = this._usuario.getIdentity();
@@ -53,25 +57,50 @@ export class SoporteComponent implements OnInit {
   requerimientoSolucionado(){
     this.soporte = new Soporte( this.soporte.sp_titulo, this.soporte.sp_detalle, this.soporte.sp_id, this.soporte.sp_usuario, 6);
     this._soporte.actualizaTicket(this.soporte).subscribe( resp =>{
+      Swal.fire({
+        icon: "success",
+        title: "Inconveniente Solucionado ",
+        text: 'Su inconveniente a sido solucionado Satisfactoriamente',
+        showConfirmButton: false,
+        timer: 1500
+      });
       this.router.navigate(['/soportes']);
     })
   }
-  requerimientoNoSolucionado(){
-   this.soporte = new Soporte( this.soporte.sp_titulo, this.soporte.sp_detalle, this.soporte.sp_id, this.soporte.sp_usuario, 2);
-     this._soporte.actualizaTicket(this.soporte).subscribe( resp =>{
-      Swal.fire({
-        title: 'Por favor describa sus inconenientes!',
-        showClass: {
-          popup: 'animated fadeInDown faster'
-        },
-        hideClass: {
-          popup: 'animated fadeOutUp faster'
-        }
+
+  nuevoRequerimento(forma){
+    this.soporte = new Soporte(this.soporte.sp_titulo, this.soporte.sp_detalle, this.soporte.sp_id, this.soporte.sp_usuario, 4);
+    this._soporte.actualizaTicket(this.soporte).subscribe( resp =>{
+      this.comentario = new Comentario(0, this.soporte.sp_id, forma.value.spc_detalle, this.soporte.sp_usuario, 0);
+      this._master.asignarTecnico(this.comentario).subscribe( resp =>{
+        Swal.fire({
+          icon: "success",
+          title: "Requerimento agregado!",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        forma.reset()
+        this.router.navigate(['/soportes']);
       })
-     })
+    })
+  }
+
+  requerimientoNoSolucionado(){
+    this.quejas = true;
+    Swal.fire({
+      title: 'Por favor describa sus inconvenientes!',
+      showClass: {
+        popup: 'animated fadeInDown faster'
+      },
+      hideClass: {
+        popup: 'animated fadeOutUp faster'
+      }
+    })
+  
   }
 
   listadoCometarios(){
+    this.tablaCometarios = false
     this.activatedRoute.params.subscribe(params => {
       var id = +params["id"];
       this._soporte.obtenerComentarios(id).subscribe((resp: any) => {
@@ -83,6 +112,7 @@ export class SoporteComponent implements OnInit {
   obtenerTecnicoAsignado(){
     this.activatedRoute.params.subscribe(params => {
       var id = +params["id"];
+      console.log(id);
       this._soporte.obtenetTEcnicoAsignado(id).subscribe((resp: any) => {
         this.tecnico = resp.data[0];
       });

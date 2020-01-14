@@ -4,7 +4,7 @@ import { Soporte } from "src/app/models/soporte.model";
 import { URL_SERVICIOS } from "src/app/config/config";
 import "rxjs/add/operator/map";
 import Swal from "sweetalert2";
-import { Comentario } from "src/app/models/soporteComentarios.model";
+
 
 @Injectable({
   providedIn: "root"

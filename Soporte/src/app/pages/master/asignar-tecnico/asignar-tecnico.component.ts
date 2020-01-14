@@ -42,25 +42,6 @@ export class AsignarTecnicoComponent implements OnInit {
     });
   }
 
-  // asignarTecnico(forma){
-  //   this.idTecnico = parseInt(forma.value.spc_clie_tec);
-  //   this.soporte = new Soporte(this.soporte.sp_titulo, this.soporte.sp_detalle, this.soporte.sp_id, this.usuario[0].id, 3);
-  //   console.log(this.soporte)
-  //   this.comentario = new Comentario(0, this.soporte.sp_id, forma.value.spc_detalle, this.soporte.sp_usuario, this.idTecnico);
-  //   this._soporte.asignarTecnico(this.comentario).subscribe( resp => {
-  //     console.log(resp)
-  //     Swal.fire({
-  //       icon: "success",
-  //       title: "Técnico asignado al exitosamente!",
-  //       showConfirmButton: false,
-  //       timer: 1500
-        
-  //     });
-  //     forma.reset()
-  //     this.router.navigate(['/listar']);
-  //       });
-  //     }
-
   asignarTecnico(forma){
       this.idTecnico = parseInt(forma.value.spc_clie_tec);
       this.soporte = new Soporte(this.soporte.sp_titulo, this.soporte.sp_detalle, this.soporte.sp_id, this.soporte.sp_usuario, 3);

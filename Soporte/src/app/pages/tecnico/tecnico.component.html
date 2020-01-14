@@ -1,4 +1,9 @@
-<div>
+<div class="row" *ngIf="!cargandoTicket">
+  <div *ngIf="!cargandoTicket" class="alert alert-danger col-md-9 text-center" role="alert">
+    No tiene Ticket´s asignados para <b>Soporte Técnico</b> 
+  </div> 
+</div>
+<div *ngIf="cargandoTicket">
     <div class="alert alert-dark" role="alert">
       Ticket´s Asignados
     </div>

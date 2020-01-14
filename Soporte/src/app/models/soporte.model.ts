@@ -7,6 +7,7 @@ export class Soporte {
         public sp_usuario?: number,
         public sp_estado?: number,
         public sp_fecha?: string,
+        public spe_detalle?: string
     ) {}
 
 }

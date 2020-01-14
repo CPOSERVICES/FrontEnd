@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
 import { URL_SERVICIOS } from 'src/app/config/config';
 import { HttpClient } from '@angular/common/http';
-import { ThrowStmt } from '@angular/compiler';
 import { Comentario } from 'src/app/models/soporteComentarios.model';
+import { UsuarioService } from '../usuario/usuario.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TecnicoService {
 
+  public usuario: any
+
+
   constructor(
     public http: HttpClient
-  ) { }
+  ) {}
 
   /************************************* 
   LISTA REQUERIMIENTO POR ID

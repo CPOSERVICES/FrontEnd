@@ -33,7 +33,7 @@
     </div>
   </div>
   <div class="col-md-6" align="center">
-    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <div *ngIf="soporte.sp_estado == 5 || soporte.sp_estado == 6" class="table-wrapper-scroll-y my-custom-scrollbar">
       <table class="table table-striped mb-0">
         <thead class="thead-dark">
           <tr>
@@ -65,11 +65,19 @@
             routerLinkActive="router-link-active" class="btn btn-outline-danger"><i class="fas fa-times"></i>
             No</button>
         </div>
-        <div class=" form-control col-sm-10">
+        <!-- <div class=" form-control col-sm-10">
           <input  [(ngModel)]="soporte.sp_titulo" #sp_titulo="ngModel" name="sp_titulo" type="text"
             class="form-control" placeholder="Ingrese inconveniente ">
-        </div>
+        </div> -->
       </div>
+    </div>
+<br>
+    <div *ngIf="quejas == true">
+      <form ngNativeValidate #forma="ngForm" (ngSubmit)="nuevoRequerimento(forma)">
+        <input class="form-control" placeholder="Ingrese inconveniente" [(ngModel)]="comentario.spc_detalle" #spc_detalle="ngModel" name="spc_detalle" type="text">
+        <br>
+        <button class="btn btn-success" type="submit">Enviar Requerimiento</button>
+      </form>
       
     </div>
   </div>
