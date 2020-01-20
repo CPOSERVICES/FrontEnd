@@ -33,10 +33,8 @@ export class TecnicoComponent implements OnInit {
   }
 
    cargarTicketsTecnico() {
-     console.log(this.idTecnico)
        this._tecnico.cargarTicketSoporteTecnico(this.idTecnico).subscribe((resp: any) => {
         this.soportes = resp.data
-        console.log('asdasd',this.soportes);
         if( this.soportes.length == 0){
           this.cargandoTicket = false;
         } else {

@@ -16,6 +16,7 @@ export class ModalSoporteService {
   }
 
   mostarModal() {
+    
     this.oculto = "";
     //this.id = id;
    // Swal.fire('Para visualizar la información presione CARGAR')

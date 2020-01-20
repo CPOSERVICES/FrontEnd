@@ -2,11 +2,13 @@ import { Component, OnInit, NgZone } from "@angular/core";
 import {
   SoporteService,
   ModalSoporteService,
-  UsuarioService
+  UsuarioService,
+  CorreoService
 } from "src/app/services/service.index";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Soporte } from "src/app/models/soporte.model";
 import Swal from "sweetalert2";
+import { Usuario } from 'src/app/models/usuario.model';
 
 @Component({
   selector: "app-modal-soporte",
@@ -24,20 +26,23 @@ export class ModalSoporteComponent implements OnInit {
     public _usuario: UsuarioService,
     public _soporte: SoporteService,
     public _modalSoporteService: ModalSoporteService,
+    public _correo: CorreoService,
     public activatedRoute: ActivatedRoute,
     public router: Router,
-    private zone: NgZone
   ) {
     this.usuario = this._usuario.getIdentity();
     this.soporte = new Soporte("", "", 0, this.usuario[0].id, 2);
     this.idUsuario = this.usuario[0].id;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    //this.enviarMail();
+  }
 
   cerrarModal() {
     this._modalSoporteService.ocultarModal();
     this.soporte = new Soporte("", "", 0, 0, 0);
+    
   }
 
   cargarTicketsUsuario() {
@@ -62,11 +67,13 @@ export class ModalSoporteComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         });
+        this.enviarMail();
         forma.reset();
         this.cerrarModal();
         this.router
           .navigateByUrl("/SoportesComponent", { skipLocationChange: true })
           .then(() => {
+
             this.router.navigate(["/soportes"]);
           });
       } else {
@@ -78,5 +85,11 @@ export class ModalSoporteComponent implements OnInit {
         });
       }
     });
+  }
+
+  enviarMail(){
+    this.usuario = new Usuario (this.usuario[0].usuario,'',this.usuario[0].correo,'','',0,0)
+     this._correo.enviarMailTecnico(this.usuario).subscribe(resp =>{
+     })
   }
 }

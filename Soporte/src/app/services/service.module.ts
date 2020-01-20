@@ -10,7 +10,8 @@ import {
   TecnicoService,
   LoginGuardsGuard,
   ModalSoporteService,
-  MasterService
+  MasterService,
+  CorreoService
   
 } from './service.index';
 
@@ -31,7 +32,8 @@ import {
     UsuarioService,
     TecnicoService,
     ModalSoporteService,
-    MasterService
+    MasterService,
+    CorreoService
   ]
 })
 export class ServiceModule { }

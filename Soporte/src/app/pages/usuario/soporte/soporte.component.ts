@@ -29,9 +29,10 @@ export class SoporteComponent implements OnInit {
   constructor(
     public _soporte: SoporteService,
     public _usuario: UsuarioService,
-    public activatedRoute: ActivatedRoute,
     public _master: MasterService,
-    public router: Router
+    public router: Router,
+    public activatedRoute: ActivatedRoute,
+    
   ) {
     this.usuario = this._usuario.getIdentity();
     this.soporte = new Soporte("", "", 0, this.usuario[0].id, 2);
@@ -43,6 +44,7 @@ export class SoporteComponent implements OnInit {
     this.cargarTicket();
     this.listadoCometarios();
     this.obtenerTecnicoAsignado();
+    //this.enviarMail();
   }
 
   cargarTicket() {
@@ -85,6 +87,9 @@ export class SoporteComponent implements OnInit {
     })
   }
 
+
+  
+
   requerimientoNoSolucionado(){
     this.quejas = true;
     Swal.fire({
@@ -112,7 +117,6 @@ export class SoporteComponent implements OnInit {
   obtenerTecnicoAsignado(){
     this.activatedRoute.params.subscribe(params => {
       var id = +params["id"];
-      console.log(id);
       this._soporte.obtenetTEcnicoAsignado(id).subscribe((resp: any) => {
         this.tecnico = resp.data[0];
       });

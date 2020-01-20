@@ -1,3 +1,5 @@
+export { CorreoService } from './correo/correo.service';
+
 export { MasterService } from './master/master.service';
 
 export { LoginGuardsGuard } from './guards/login-guards.guard';
@@ -11,6 +13,7 @@ export { UsuarioService } from './usuario/usuario.service';
 export { SharedService } from './shared/shared.service';
 export { SidebarService } from './shared/sidebar.service';
 export { SoporteService } from './soporte/usuario/soporteUsuario.service';
+
 
 
 
